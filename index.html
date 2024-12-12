@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Damilola">
+  <title>ChatGPT Prompt Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background: #0d3b66;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+    .form-group label {
+      font-weight: bold;
+    }
+    .btn-primary {
+      background: #0d3b66;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #0d3b66;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #555;
+    }
+    .output-container {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f9f9f9;
+      border: 1px dashed #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>ChatGPT Prompt Generator</h1>
+  </header>
+  <div class="container">
+    <form id="promptForm">
+      <div class="form-group">
+        <label for="contextInput">1. Context or Scenario:</label>
+        <textarea class="form-control" id="contextInput" rows="3" placeholder="Describe the situation or context for ChatGPT..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="instructionInput">2. Specific Instructions:</label>
+        <textarea class="form-control" id="instructionInput" rows="3" placeholder="Provide detailed instructions for ChatGPT..."></textarea>
+      </div>
+      <div class="form-group">
+        <label for="responseType">3. Desired Response Type:</label>
+        <select class="form-control" id="responseType">
+          <option value="text">Text (Default)</option>
+          <option value="code">Code</option>
+          <option value="list">List</option>
+          <option value="summary">Summary</option>
+          <option value="conversation">Conversation</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary btn-block" onclick="generatePrompt()">Generate Prompt</button>
+    </form>
+    <div id="output" class="output-container" style="display: none;">
+      <h5>Generated Prompt:</h5>
+      <p id="outputText"></p>
+    </div>
+  </div>
+  <footer class="footer">
+    &copy; 2025 ChatGPT Prompt Generator by Damilola
+  </footer>
+  <script>
+   function generatePrompt() {
+  const context = document.getElementById('contextInput').value;
+  const instructions = document.getElementById('instructionInput').value;
+  const responseType = document.getElementById('responseType').value;
+
+  if (context && instructions) {
+    const prompt = `Context: ${context}\n\nInstructions: ${instructions}\n\nDesired Response Type: ${responseType}`;
+    document.getElementById('outputText').textContent = prompt;
+    document.getElementById('output').style.display = 'block';
+  } else {
+    alert('Please fill in both the context and instructions.');
+  }
+}
+
+  </script>
+</body>
+</html>
